@@ -4,6 +4,7 @@ use strict;
 
 use DDG::Goodie;
 use Lingua::EN::Numbers::Ordinate qw(ordsuf);
+use bigint;
 
 triggers any => 'fib', 'fibonacci';
 zci is_cached => 1;
@@ -21,7 +22,7 @@ category 'calculations';
 handle remainder => sub {
     s/^\s+//;
     s/\s+$//;
-    return unless /^(?:what(?:'s| is) the )?(\d+)(?:th|rd|st)?(?: number)?(?: in the (?:series|sequence))?\??$/ && $1 <= 1470;
+    return unless /^(?:what(?:'s| is) the )?(\d+)(?:th|rd|st)?(?: number)?(?: in the (?:series|sequence))?\??$/;
     my $n = $1;
     my $fib_n_1 = 1;
     my $fib_n_2 = 0;
